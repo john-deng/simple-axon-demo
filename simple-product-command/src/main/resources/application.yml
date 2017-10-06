@@ -1,0 +1,25 @@
+app:
+  name: simpleproduct
+  role: command
+  datasource:
+     username: root
+     password: "@vpclubdev"
+
+spring:
+  profiles:
+    include:
+    - web
+    - swagger
+    - locale
+    - logging
+    - jpa
+    - axon-amqp-producer
+    - axon-jgroups
+    - axon-eventstore
+
+axon:
+  eventstore:
+    aggregate-class: com.example.simpleproductcommand.aggregates.ProductAggregate
+  distributed:
+    jgroups:
+      cluster-name: simple-axon-demo

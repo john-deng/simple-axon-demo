@@ -1,0 +1,40 @@
+app:
+  name: simpleorder
+  role: command
+  descriptions: 订单命令服务
+  datasource:
+    username: root
+    password: "@vpclubdev"
+
+
+spring:
+  profiles:
+    include:
+    - web
+    - swagger
+    - locale
+    - logging
+    - jpa
+    - axon-jgroups
+    - axon-amqp-producer
+    - axon-amqp-consumer
+    - axon-eventstore
+    - axon-scheduler
+    - axon-saga
+
+axon:
+  amqp:
+    consumer:
+      queue: moses-simpleproduct-command
+  eventstore:
+    aggregate-class: com.example.simpleordercommand.aggregates.OrderAggregate
+  saga:
+    saga-class: com.example.simpleordercommand.saga.OrderSaga
+  distributed:
+    jgroups:
+      cluster-name: simple-axon-demo
+  eventhandling:
+    processors:
+      product:
+        source: productQueueMessageSource
+
