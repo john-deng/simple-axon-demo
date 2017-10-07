@@ -1,0 +1,25 @@
+app:
+  name: simpleorder
+  role: query
+  descriptions: 订单查询服务
+  datasource:
+    username: root
+    password: "@vpclubdev"
+
+spring:
+  profiles:
+    include:
+    - web
+    - swagger
+    - locale
+    - jpa
+    - axon-amqp-consumer
+
+axon:
+  amqp:
+    consumer:
+      queue: moses-simpleorder-command
+  eventhandling:
+    processors:
+      order:
+        source: orderQueueMessageSource

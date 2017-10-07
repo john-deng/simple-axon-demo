@@ -1,0 +1,25 @@
+app:
+  name: simpleproduct
+  role: query
+  descriptions: 商品查询服务
+  datasource:
+    username: root
+    password: "@vpclubdev"
+
+spring:
+  profiles:
+    include:
+    - web
+    - swagger
+    - locale
+    - jpa
+    - axon-amqp-consumer
+
+axon:
+  amqp:
+    consumer:
+      queue: moses-simpleproduct-command
+  eventhandling:
+    processors:
+      product:
+        source: productQueueMessageSource
