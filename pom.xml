@@ -71,5 +71,13 @@
 
 	</dependencies>
 
+	<modules>
+		<module>common-api</module>
+		<module>simple-order-command</module>
+		<module>simple-product-command</module>
+		<module>simple-order-query</module>
+		<module>simple-product-query</module>
+	</modules>
+
 
 </project>
