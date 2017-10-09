@@ -3,7 +3,7 @@ package com.example.simpleordercommand.handlers;
 import com.example.commonapi.commands.order.ConfirmOrderCommand;
 import com.example.commonapi.commands.order.CreateOrderCommand;
 import com.example.commonapi.commands.order.OrderDeliverCommand;
-import com.example.commonapi.commands.order.PaymentPaidCommand;
+import com.example.commonapi.commands.order.NotifyPaymentCommand;
 import com.example.commonapi.events.order.OrderAutoCancelledEvent;
 import com.example.commonapi.events.order.OrderAutoReceivedEvent;
 import com.example.simpleordercommand.aggregates.OrderAggregate;
@@ -50,7 +50,7 @@ public class OrderCommondHandler {
   }
 
   @CommandHandler
-  public void handle(PaymentPaidCommand command) {
+  public void handle(NotifyPaymentCommand command) {
     Aggregate<OrderAggregate> aggregate = repository.load(command.getOrderId().toString());
     aggregate.execute(aggregateRoot -> aggregateRoot.pay(command.getTransactionNo(), command.getPayType(), quartzEventScheduler));
   }

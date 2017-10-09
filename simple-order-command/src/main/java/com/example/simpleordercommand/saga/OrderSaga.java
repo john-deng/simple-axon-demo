@@ -150,12 +150,14 @@ public class OrderSaga {
     @EndSaga
     public void handel(OrderCancelledEvent event) {
         log.info("Order {} is  cancelled", event.getOrderId());
+        log.info("End Saga!");
     }
 
     @SagaEventHandler(associationProperty = "orderId")
     @EndSaga
-    public void handel(OrderReceivedEvent event) {
-        log.info("Order {} is  received", event.getOrderId());
+    public void handel(OrderDeliveredEvent event) {
+        log.info("Order {} is delivered", event.getOrderId());
+        log.info("End Saga!");
     }
 
 }

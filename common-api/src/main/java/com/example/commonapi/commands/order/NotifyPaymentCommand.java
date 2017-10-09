@@ -11,7 +11,7 @@ import org.axonframework.commandhandling.TargetAggregateIdentifier;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentPaidCommand {
+public class NotifyPaymentCommand {
 
   @TargetAggregateIdentifier
   private Long orderId;

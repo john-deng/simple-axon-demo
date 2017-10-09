@@ -7,7 +7,7 @@ import cn.vpclub.moses.utils.common.IdWorker;
 import cn.vpclub.moses.web.controller.AbstractController;
 import com.example.commonapi.commands.order.CreateOrderCommand;
 import com.example.commonapi.commands.order.OrderDeliverCommand;
-import com.example.commonapi.commands.order.PaymentPaidCommand;
+import com.example.commonapi.commands.order.NotifyPaymentCommand;
 import com.example.simpleordercommand.requests.CreateOrderRequest;
 import com.example.simpleordercommand.requests.PaymentPaidCallback;
 import com.example.simpleordercommand.requests.UpdateOrderRequest;
@@ -51,7 +51,7 @@ public class OrderController extends AbstractController {
 
   @PostMapping("/paid")
   public void callBack(@RequestBody PaymentPaidCallback request) {
-    PaymentPaidCommand command = new PaymentPaidCommand(request.getOrderId(),
+    NotifyPaymentCommand command = new NotifyPaymentCommand(request.getOrderId(),
             request.getTransactionNo(), request.getPayType());
     commandGateway.sendAndWait(command);
   }
