@@ -30,6 +30,7 @@ public class ProductCommondHandler {
 
   @CommandHandler
   public void on(ReserveProductCommand command) {
+    log.info("ReserveProductCommand,{}", command);
     Aggregate<ProductAggregate> aggregate = repository.load(command.getSkuId().toString());
     aggregate
         .execute(aggregateRoot -> aggregateRoot.reserve(command.getOrderId(), command.getQuantity()));
@@ -37,6 +38,7 @@ public class ProductCommondHandler {
 
   @CommandHandler
   public void on(RollbackReservationCommand command) {
+    log.info("RollbackReservationCommand,{}", command);
     Aggregate<ProductAggregate> aggregate = repository.load(command.getSkuId().toString());
     aggregate.execute(
         aggregateRoot -> aggregateRoot.cancellReserve(command.getOrderId(), command.getNumber()));

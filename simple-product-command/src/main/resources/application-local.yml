@@ -9,7 +9,7 @@ server:
 logging:
   level:
     org.axonframework: debug
-    cn.vpclub.moses: debug
+    com.example: debug
 
 spring:
   rabbitmq:
