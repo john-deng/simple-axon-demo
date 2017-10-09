@@ -23,10 +23,10 @@ public class AxonConfiguration {
     @Bean
     public SpringAMQPMessageSource springAMQPMessageSource(Serializer serializer) {
         return new SpringAMQPMessageSource(serializer) {
-            @RabbitListener(queues = "moses-simpleproduct-command") // Saga depends on it.
+            @RabbitListener(queues = "moses-simpleorder-command") // Saga depends on it.
             @Override
             public void onMessage(Message message, Channel channel) throws Exception {
-                log.info("message received: " + message.toString());
+                log.info("message received: {}", message.toString());
                 super.onMessage(message, channel);
             }
         };
