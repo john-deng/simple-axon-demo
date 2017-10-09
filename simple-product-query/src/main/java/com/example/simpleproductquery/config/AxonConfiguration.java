@@ -15,9 +15,9 @@ import org.springframework.context.annotation.Configuration;
 public class AxonConfiguration {
     // listen to queue
     @Bean
-    public SpringAMQPMessageSource productQueueMessageSource(Serializer serializer) {
+    public SpringAMQPMessageSource springAMQPMessageSource(Serializer serializer) {
         return new SpringAMQPMessageSource(serializer) {
-            @RabbitListener(queues = "moses-simpleproduct-command")
+            @RabbitListener(queues = "moses-simpleproduct-query")
             @Override
             public void onMessage(Message message, Channel channel) throws Exception {
                 log.info("message received: " + message.toString());

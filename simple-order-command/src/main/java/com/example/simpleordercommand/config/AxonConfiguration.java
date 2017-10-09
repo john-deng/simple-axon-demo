@@ -21,9 +21,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class AxonConfiguration {
     // listen to queue
     @Bean
-    public SpringAMQPMessageSource queueMessageSource(Serializer serializer) {
+    public SpringAMQPMessageSource springAMQPMessageSource(Serializer serializer) {
         return new SpringAMQPMessageSource(serializer) {
-            @RabbitListener(queues = {"moses-simpleorder-command", "moses-simpleproduct-command"}) // Saga depends on it.
+            @RabbitListener(queues = "moses-simpleproduct-command") // Saga depends on it.
             @Override
             public void onMessage(Message message, Channel channel) throws Exception {
                 log.info("message received: " + message.toString());
@@ -40,7 +40,7 @@ public class AxonConfiguration {
     public SagaConfiguration<OrderSaga> orderSagaConfiguration(Serializer serializer) {
         SagaConfiguration<OrderSaga> sagaConfiguration = SagaConfiguration.subscribingSagaManager(
                 OrderSaga.class,
-                c -> queueMessageSource(serializer));
+                c -> springAMQPMessageSource(serializer));
         sagaConfiguration.registerHandlerInterceptor(c -> transactionManagingInterceptor());
         return sagaConfiguration;
     }

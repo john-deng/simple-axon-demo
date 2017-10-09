@@ -1,9 +1,7 @@
 app:
   name: simpleproduct
   role: command
-  datasource:
-     username: root
-     password: "@vpclubdev"
+  cluster-name: simple-axon-demo
 
 spring:
   profiles:
@@ -12,13 +10,11 @@ spring:
     - swagger
     - locale
     - logging
-    - axon-amqp-producer
+    - axon-amqp
     - axon-jgroups
     - axon-eventstore
 
 axon:
   eventstore:
     aggregate-class: com.example.simpleproductcommand.aggregates.ProductAggregate
-  distributed:
-    jgroups:
-      cluster-name: simple-axon-demo
+
