@@ -89,12 +89,12 @@ public class OrderAggregate {
   }
 
   public void confirm(ScheduleToken token) {
-    apply(
-        new OrderConfirmedEvent(orderId, token));
+    apply(new OrderConfirmedEvent(orderId, token));
   }
 
   @EventHandler
   public void on(OrderConfirmedEvent event) {
+    log.info("on OrderConfirmedEvent");
     this.closeScheduleToken = event.getCloseScheduleToken();
     this.postTime = System.currentTimeMillis();
   }

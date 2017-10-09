@@ -4,8 +4,9 @@ app:
   descriptions: 订单命令服务
   datasource:
     username: root
-    password: "@vpclubdev"
-
+    password: ckVxkqVs5Gr4lSLtJTsa301UJ9TwjHR/empatRoKLhyav2f6YSsti7OmVQfaO7xreYXoIbYPmHo6p11UbY/XJg==
+    druid:
+      public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAN9dGI7ljLxGCLgm0jzfgaYrzYaIAyhpz3v1KffP5Pvv0nKhJzjD8vbRghFWakv6xHZHPPwjgZtFVb10HiblEHECAwEAAQ==
 
 spring:
   profiles:
@@ -15,6 +16,7 @@ spring:
     - locale
     - logging
     - jpa
+    - druid
     - axon-jgroups
     - axon-amqp-producer
     - axon-amqp-consumer
@@ -26,6 +28,10 @@ axon:
   amqp:
     consumer:
       queue: moses-simpleproduct-command
+  eventhandling:
+    processors:
+      queueListener:
+        source: queueMessageSource
   eventstore:
     aggregate-class: com.example.simpleordercommand.aggregates.OrderAggregate
   saga:
@@ -33,8 +39,4 @@ axon:
   distributed:
     jgroups:
       cluster-name: simple-axon-demo
-  eventhandling:
-    processors:
-      product:
-        source: productQueueMessageSource
 

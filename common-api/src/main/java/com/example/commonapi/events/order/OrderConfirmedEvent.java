@@ -10,7 +10,7 @@ import org.axonframework.eventhandling.scheduling.ScheduleToken;
 @Data
 public class OrderConfirmedEvent {
 
-  private Long id;
+  private Long orderId;
 
   private ScheduleToken closeScheduleToken;
 }

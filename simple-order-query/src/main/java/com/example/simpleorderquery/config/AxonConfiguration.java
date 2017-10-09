@@ -20,7 +20,7 @@ public class AxonConfiguration {
             @RabbitListener(queues = "moses-simpleorder-command")
             @Override
             public void onMessage(Message message, Channel channel) throws Exception {
-                log.debug("message received: " + message.toString());
+                log.info("message received: " + message.toString());
                 super.onMessage(message, channel);
             }
         };

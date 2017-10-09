@@ -41,6 +41,10 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.vpclub</groupId>
+			<artifactId>spring-boot-starter-druid</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cn.vpclub</groupId>
 			<artifactId>spring-boot-starter-axon</artifactId>
 			<exclusions>
 				<exclusion>

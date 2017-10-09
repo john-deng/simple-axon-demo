@@ -105,6 +105,7 @@ public class OrderSaga {
 
     @SagaEventHandler(associationProperty = "orderId")
     public void handle(ProductReservedEvent event) {
+        log.info("product {} reserved for order {}", event.getProductId(), event.getOrderId());
         OrderProduct reservedProduct = toReserve.get(event.getProductId());
         reservedProduct.setReserved(true);
         toReserveNumber--;
@@ -131,9 +132,9 @@ public class OrderSaga {
         }
     }
 
-    @SagaEventHandler(associationProperty = "id", keyName = "orderId")
+    @SagaEventHandler(associationProperty = "orderId")
     public void handle(OrderConfirmedEvent event) {
-        log.info("Order {} is confirmed", event.getId());
+        log.info("Order {} is confirmed", event.getOrderId());
     }
 
     @SagaEventHandler(associationProperty = "orderId")
@@ -156,6 +157,5 @@ public class OrderSaga {
     public void handel(OrderReceivedEvent event) {
         log.info("Order {} is  received", event.getOrderId());
     }
-
 
 }
