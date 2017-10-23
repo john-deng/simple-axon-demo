@@ -86,6 +86,7 @@ public class OrderSaga {
                         .send(new RollbackReservationCommand(orderIdentifier, id, product.getQuantity()));
             });
             if (toRollback.isEmpty()) {
+                // should send with cancel cause from OrderAutoCancelledEvent
                 commandGateway.send(new RollbackOrderCommand(orderIdentifier));
             }
             return;

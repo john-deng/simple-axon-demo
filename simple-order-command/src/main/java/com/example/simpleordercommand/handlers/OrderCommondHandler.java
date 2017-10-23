@@ -1,9 +1,6 @@
 package com.example.simpleordercommand.handlers;
 
-import com.example.commonapi.commands.order.ConfirmOrderCommand;
-import com.example.commonapi.commands.order.CreateOrderCommand;
-import com.example.commonapi.commands.order.OrderDeliverCommand;
-import com.example.commonapi.commands.order.NotifyPaymentCommand;
+import com.example.commonapi.commands.order.*;
 import com.example.commonapi.events.order.OrderAutoCancelledEvent;
 import com.example.commonapi.events.order.OrderAutoReceivedEvent;
 import com.example.simpleordercommand.aggregates.OrderAggregate;
@@ -37,6 +34,12 @@ public class OrderCommondHandler {
         () -> new OrderAggregate(command.getOrderId(), command.getUsername(),
             command.getOrderProducts(), command.getAppId(), "",
             ""));
+  }
+
+  @CommandHandler
+  public void handle(RollbackOrderCommand command) {
+    Aggregate<OrderAggregate> aggregate = repository.load(command.getOrderId().toString());
+    aggregate.execute(aggregateRoot -> aggregateRoot.delete("cancelled order by scheduler timeout"));
   }
 
   @CommandHandler

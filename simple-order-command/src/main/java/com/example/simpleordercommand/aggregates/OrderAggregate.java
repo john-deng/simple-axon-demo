@@ -125,4 +125,5 @@ public class OrderAggregate {
   public void delivery(Long subOrderId, String logisticsInfo) {
     apply(new OrderDeliveredEvent(orderId, subOrderId, logisticsInfo));
   }
+
 }
