@@ -1,4 +1,4 @@
-package com.example.simpleorderquery.handlers;
+package com.example.simpleordercommand.handlers;
 
 import com.example.commonapi.events.order.OrderConfirmedEvent;
 import com.example.commonapi.events.product.ProductReservedEvent;
