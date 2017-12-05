@@ -13,6 +13,8 @@ logging:
 
 spring:
   rabbitmq:
-    host: rabbit-local.vpclub.io
+    host: rabbit-local
   jpa:
       hibernate.ddl-auto: update
+
+

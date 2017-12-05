@@ -4,7 +4,7 @@ axon:
       configuration-file: jgroups/udp.xml
 
 server:
-  port: 9091
+  port: 9095
 
 logging:
   level:
@@ -13,6 +13,6 @@ logging:
 
 spring:
   rabbitmq:
-    host: rabbit-local.vpclub.io
+    host: rabbit-local
   jpa:
     hibernate.ddl-auto: update
