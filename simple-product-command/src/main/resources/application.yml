@@ -16,5 +16,5 @@ spring:
 
 axon:
   eventstore:
-    aggregate-class: com.example.simpleproductcommand.aggregates.ProductAggregate
+    aggregate-package: com.example.simpleproductcommand.aggregates
 

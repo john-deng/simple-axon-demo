@@ -1,5 +1,6 @@
 package com.example.simpleordercommand.config;
 
+import cn.vpclub.spring.boot.axon.autoconfigure.EventSourcingRepositoryFactory;
 import com.example.simpleordercommand.saga.OrderSaga;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @Slf4j
 public class AxonConfiguration {
-    // listen to queue
+    // Saga Configuration
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+
+    @Autowired
+    private EventSourcingRepositoryFactory repositoryFactory;
+
     @Bean
     public SpringAMQPMessageSource springAMQPMessageSource(Serializer serializer) {
         return new SpringAMQPMessageSource(serializer) {
@@ -31,10 +38,6 @@ public class AxonConfiguration {
             }
         };
     }
-
-    // Saga Configuration
-    @Autowired
-    private PlatformTransactionManager transactionManager;
 
     @Bean
     public SagaConfiguration<OrderSaga> orderSagaConfiguration(Serializer serializer) {
