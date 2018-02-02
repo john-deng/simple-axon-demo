@@ -1,7 +1,3 @@
-axon:
-  distributed:
-    jgroups:
-      configuration-file: jgroups/udp.xml
 
 server:
   port: 9091
@@ -11,10 +7,5 @@ logging:
     org.axonframework: debug
     com.example: debug
 
-spring:
-  rabbitmq:
-    host: rabbit-local
-  jpa:
-      hibernate.ddl-auto: update
 
 
