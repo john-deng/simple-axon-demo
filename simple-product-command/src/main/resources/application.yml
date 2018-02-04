@@ -1,4 +1,5 @@
 app:
+  project: moses
   name: simpleproduct
   role: command
   cluster-name: simple-axon-demo

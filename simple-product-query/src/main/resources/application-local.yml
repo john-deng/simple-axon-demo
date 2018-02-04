@@ -5,11 +5,6 @@ server:
 logging:
   level:
     org.axonframework: debug
-    cn.vpclub.moses: debug
-
-spring:
-  rabbitmq:
-    host: rabbit-local
-  jpa:
-    hibernate.ddl-auto: update
+    cn.vpclub: debug
+    com.example: debug
 

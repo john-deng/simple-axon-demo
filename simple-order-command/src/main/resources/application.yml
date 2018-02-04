@@ -1,4 +1,5 @@
 app:
+  project: moses
   name: simpleorder
   role: command
   descriptions: 订单命令服务

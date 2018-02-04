@@ -5,6 +5,7 @@ server:
 logging:
   level:
     org.axonframework: debug
+    cn.vpclub: debug
     com.example: debug
 
 

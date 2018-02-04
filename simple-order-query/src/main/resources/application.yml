@@ -1,4 +1,5 @@
 app:
+  project: moses
   name: simpleorder
   role: query
   descriptions: 订单查询服务

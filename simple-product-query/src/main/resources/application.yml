@@ -1,4 +1,5 @@
 app:
+  project: moses
   name: simpleproduct
   role: query
   descriptions: 商品查询服务
