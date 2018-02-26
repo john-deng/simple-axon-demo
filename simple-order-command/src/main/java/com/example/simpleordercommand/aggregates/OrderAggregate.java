@@ -1,8 +1,17 @@
 package com.example.simpleordercommand.aggregates;
 
+import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
+import static org.axonframework.commandhandling.model.AggregateLifecycle.markDeleted;
+
 import com.example.commonapi.domain.OrderProduct;
-import com.example.commonapi.events.order.*;
+import com.example.commonapi.events.order.OrderCancelledEvent;
+import com.example.commonapi.events.order.OrderConfirmReceiptEvent;
+import com.example.commonapi.events.order.OrderConfirmedEvent;
+import com.example.commonapi.events.order.OrderCreatedEvent;
+import com.example.commonapi.events.order.OrderDeliveredEvent;
 import com.example.commonapi.events.pay.OrderPaidEvent;
+import java.util.List;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +22,6 @@ import org.axonframework.eventhandling.scheduling.ScheduleToken;
 import org.axonframework.eventhandling.scheduling.quartz.QuartzEventScheduler;
 import org.axonframework.spring.stereotype.Aggregate;
 
-import java.util.List;
-
-import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
-import static org.axonframework.commandhandling.model.AggregateLifecycle.markDeleted;
-
 /**
  * Created by kellen on 2017/9/12.
  */
@@ -25,6 +29,7 @@ import static org.axonframework.commandhandling.model.AggregateLifecycle.markDel
 @ToString
 @Slf4j
 @Aggregate
+@Getter
 public class OrderAggregate {
 
   @AggregateIdentifier
@@ -70,7 +75,7 @@ public class OrderAggregate {
   private ScheduleToken closeScheduleToken;
 
   public OrderAggregate(Long id, String username, List<OrderProduct> orderLine, Long appId,
-                        String postIp, String mainOrderNo) {
+      String postIp, String mainOrderNo) {
     apply(new OrderCreatedEvent(id, orderLine, username, appId, postIp, mainOrderNo));
   }
 
@@ -125,5 +130,4 @@ public class OrderAggregate {
   public void delivery(Long subOrderId, String logisticsInfo) {
     apply(new OrderDeliveredEvent(orderId, subOrderId, logisticsInfo));
   }
-
 }
