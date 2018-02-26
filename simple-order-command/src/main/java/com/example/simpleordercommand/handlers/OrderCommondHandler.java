@@ -1,5 +1,6 @@
 package com.example.simpleordercommand.handlers;
 
+import cn.vpclub.moses.core.model.response.BaseResponse;
 import com.example.commonapi.commands.order.*;
 import com.example.commonapi.events.order.OrderAutoCancelledEvent;
 import com.example.commonapi.events.order.OrderAutoReceivedEvent;
@@ -11,6 +12,7 @@ import org.axonframework.commandhandling.model.Aggregate;
 import org.axonframework.commandhandling.model.Repository;
 import org.axonframework.eventhandling.scheduling.ScheduleToken;
 import org.axonframework.eventhandling.scheduling.quartz.QuartzEventScheduler;
+import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -67,4 +69,7 @@ public class OrderCommondHandler {
     aggregate.execute(aggregateRoot -> aggregateRoot
             .delivery(command.getSubOrderId(), command.getLogisticsInfo()));
   }
+
+
+
 }
