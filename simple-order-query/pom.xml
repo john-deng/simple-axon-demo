@@ -37,12 +37,10 @@
 
 		<dependency>
 			<groupId>cn.vpclub</groupId>
-			<artifactId>spring-boot-starter-jpa</artifactId>
+			<artifactId>moses-data</artifactId>
+			<version>${moses-framework.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>cn.vpclub</groupId>
-			<artifactId>spring-boot-starter-druid</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>cn.vpclub</groupId>
 			<artifactId>spring-boot-starter-axon</artifactId>
