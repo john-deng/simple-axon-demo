@@ -5,7 +5,7 @@ app:
   descriptions: 订单查询服务
   cluster-name: simple-axon-demo-jd
   datasource:
-    username: root
+    username: demo
     password: ckVxkqVs5Gr4lSLtJTsa301UJ9TwjHR/empatRoKLhyav2f6YSsti7OmVQfaO7xreYXoIbYPmHo6p11UbY/XJg==
     druid:
       public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAN9dGI7ljLxGCLgm0jzfgaYrzYaIAyhpz3v1KffP5Pvv0nKhJzjD8vbRghFWakv6xHZHPPwjgZtFVb10HiblEHECAwEAAQ==
