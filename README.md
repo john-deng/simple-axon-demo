@@ -10,7 +10,7 @@ git clone git@gitlab.vpclub:moses-demos/simple-axon-demo.git
 	<parent>
 		<groupId>cn.vpclub</groupId>
 		<artifactId>spring-boot-starters</artifactId>
-		<version>1.5.19-SNAPSHOT</version>
+		<version>1.5.20-SNAPSHOT</version>
 	</parent>
 ```
 
